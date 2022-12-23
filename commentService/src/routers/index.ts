@@ -1,9 +1,8 @@
-import { Router, Request, Response } from "express";
+import { Router } from "express";
+import { retrieveAllComments } from "../services";
 
 const router: Router = Router();
 
-router.get("", (req: Request, res: Response) => {
-  res.json({ message: "Hello World" });
-});
+router.get("/:postId/comments", retrieveAllComments);
 
 export { router };

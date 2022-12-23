@@ -1,9 +1,10 @@
 import { Router, Request, Response } from "express";
+import { createNewPost, getPostByParams, retrieveAllPosts } from "../services";
 
 const router: Router = Router();
 
-router.get("", (req: Request, res: Response) => {
-  res.json({ message: "Hello World" });
-});
+router.get("", retrieveAllPosts);
+router.get("/find", getPostByParams);
+router.post("", createNewPost);
 
 export { router };

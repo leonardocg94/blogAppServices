@@ -6,7 +6,7 @@ const app: Express = express();
 
 app.use(express.json());
 
-app.use("/", router);
+app.use("/post", router);
 
 const starService = async () => {
   try {
