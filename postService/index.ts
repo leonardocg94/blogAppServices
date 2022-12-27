@@ -1,10 +1,12 @@
 import express, { Express } from "express";
 import { exit } from "process";
 import { router } from "./src/routers";
+import cors from "cors";
 
 const app: Express = express();
 
 app.use(express.json());
+app.use(cors());
 
 app.use("/post", router);
 

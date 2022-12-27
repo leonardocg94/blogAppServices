@@ -9,6 +9,8 @@ const postRepository = new DAOPost();
 // obtener todos los posts
 export const retrieveAllPosts = (req: Request, res: Response) => {
   const posts = postRepository.findAllPosts();
+  console.log("sending all posts...");
+
   return res.json({ posts });
 };
 
@@ -18,6 +20,7 @@ export const getPostByParams = (
   res: Response
 ) => {
   const { id, title } = req.query;
+  console.log("sending post by params...");
 
   if (id) {
     const post = postRepository.findById(id);
@@ -46,6 +49,8 @@ export const createNewPost = (
     title,
     id: uuid(),
   };
+
+  console.log("creating a new post...");
 
   postRepository.createOne(newPost);
   res.status(201).json({ postId: newPost.id });

@@ -12,12 +12,13 @@ export class DAOComment {
   }
 
   createOne(comment: IComment, postId: string) {
-    const postIndex = this.#posts.findIndex(post => post.id === postId);
-    if(postIndex < 0) {
-      this.#posts.push({id: postId, comments: [comment]})
-      return;
+    const postIndex = this.#posts.findIndex((post) => post.id === postId);
+    if (postIndex < 0) {
+      this.#posts.push({ id: postId, comments: [comment] });
+      return comment.id;
     }
 
-    // this.#posts[postIndex]
+    this.#posts[postIndex].comments.push(comment);
+    return comment.id;
   }
 }
